@@ -1,0 +1,13 @@
+{
+  "name": "ghl-mcp-server",
+  "owner": {
+    "name": "Timi Abiola"
+  },
+  "plugins": [
+    {
+      "name": "ghl-mcp",
+      "source": ".",
+      "description": "GoHighLevel API v2 MCP server with 314 tools across 28 categories: contacts, conversations, calendars, opportunities, invoices, payments, products, social media, voice AI, and more."
+    }
+  ]
+}
