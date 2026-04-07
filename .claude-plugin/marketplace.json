@@ -3,10 +3,13 @@
   "owner": {
     "name": "Timi Abiola"
   },
+  "metadata": {
+    "description": "GoHighLevel API v2 MCP server with full scope coverage"
+  },
   "plugins": [
     {
       "name": "ghl-mcp",
-      "source": ".",
+      "source": "./plugins/ghl-mcp",
       "description": "GoHighLevel API v2 MCP server with 314 tools across 28 categories: contacts, conversations, calendars, opportunities, invoices, payments, products, social media, voice AI, and more."
     }
   ]

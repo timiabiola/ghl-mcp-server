@@ -1,0 +1,41 @@
+{
+  "name": "ghl-mcp",
+  "version": "2.0.0",
+  "description": "GoHighLevel API v2 MCP server with full scope coverage (314 tools across 28 categories)",
+  "author": {
+    "name": "Timi Abiola"
+  },
+  "userConfig": {
+    "ghl_api_key": {
+      "description": "Your GoHighLevel Private Integration Token (starts with pit-)",
+      "sensitive": true
+    },
+    "ghl_location_id": {
+      "description": "Your GoHighLevel Sub-Account / Location ID",
+      "sensitive": false
+    }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "diff -q \"${CLAUDE_PLUGIN_ROOT}/package.json\" \"${CLAUDE_PLUGIN_DATA}/package.json\" >/dev/null 2>&1 || (mkdir -p \"${CLAUDE_PLUGIN_DATA}\" && cp \"${CLAUDE_PLUGIN_ROOT}/package.json\" \"${CLAUDE_PLUGIN_ROOT}/package-lock.json\" \"${CLAUDE_PLUGIN_DATA}/\" && cd \"${CLAUDE_PLUGIN_DATA}\" && npm install --silent) || rm -f \"${CLAUDE_PLUGIN_DATA}/package.json\""
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "ghl-api": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/src/index.js"],
+      "env": {
+        "GHL_API_KEY": "${user_config.ghl_api_key}",
+        "GHL_LOCATION_ID": "${user_config.ghl_location_id}",
+        "NODE_PATH": "${CLAUDE_PLUGIN_DATA}/node_modules"
+      }
+    }
+  }
+}
